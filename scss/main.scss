@@ -1,0 +1,468 @@
+*, *:before, *:after{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+$strokeColor: #A4A4A4;
+$boxColor: #00CD73;
+$size: 440px;
+$svgSize: 440;
+$lineLen: $svgSize;
+$totalAnimation: 16s;
+$delay: 1s;
+$squareLen: 1760;
+$circle-inner: 282.743;
+$circle-middle: 785.398;
+$circle-outter: 1099.557;
+$circle-outtest: 1382.3;
+$drawing-circle-inner: 1068.142;
+$drawing-circle-inner-raduis: 125px;
+$rotate-outter-circle-raduis: 175px;
+$drawing-circle-line-len: 11.314;
+$lineNumber: 6;
+$leaf-number: 7;
+$leaf-rotate-angle: 360/7;
+$step: 2;
+$leaf-len: 500.865;
+$colors: rgba(255,117,18,1), rgba(240,10,65,1), rgba(181,87,209,1), rgba(53,56,107,1), rgba(0,188,220,1), rgba(0,191,0,1),rgba(255,222,0,1); 
+// colors: orange, red, purple, dark-blue, blue, green, yellow
+
+@mixin stroke-line($len){
+	stroke-dasharray: $len, $len;
+	stroke-dashoffset: $len;
+}
+
+
+.wrapper{
+	position: absolute;
+	width: $size;
+	height: $size;
+	left: 50%;
+	top: 50%;
+	margin-left: $size/-2;
+	margin-top: $size/-2;
+	overflow: visible;
+	transform-origin: 220px 220px;
+}
+
+.sketch{
+	opacity: 1;
+	animation: sketch-opacity $totalAnimation $delay infinite; 
+
+	&__box{
+		stroke-width: 1px;
+		fill: none;
+		stroke: $strokeColor;
+		@include stroke-line($squareLen);
+		animation: sketch-box $totalAnimation $delay infinite; 
+	}
+
+	&__line{
+		stroke-width: 1px;
+		fill: none;
+		stroke: $strokeColor;
+		@include stroke-line($lineLen);
+		
+		@for $i from 1 through $lineNumber {
+			&--#{$i}{
+				animation: sketch-lines $totalAnimation ($totalAnimation/-80 * ($lineNumber - $i) + $delay) infinite;
+			}
+		}
+	}
+
+	&__circle{
+		stroke-width: 1px;
+		fill: none;
+		stroke: $strokeColor;
+
+		&--inner{
+			@include stroke-line($circle-inner);
+			animation: circle-inner $totalAnimation $delay infinite;
+		}	
+
+		&--middle{
+			@include stroke-line($circle-middle);
+			animation: circle-middle $totalAnimation $delay infinite;
+		}
+
+		&--outter{
+			@include stroke-line($circle-outter);
+			animation: circle-outter $totalAnimation $delay infinite;
+		}				
+	}
+}
+
+.draw{
+	stroke: nth($colors, 1);
+	stroke-width: 8px;
+	stroke-opacity: 0.8;
+
+	&__inner{
+		transform: translate(0,-$drawing-circle-inner-raduis);
+		animation: rotate-inner-circle $totalAnimation $delay infinite;
+		animation-timing-function: linear;
+
+		.draw__circle{
+			@include stroke-line($drawing-circle-inner);
+			animation: draw-inner-circle $totalAnimation $delay infinite;
+		}	
+
+		.draw__crossline{
+			@include stroke-line($drawing-circle-line-len);
+			animation: draw-inner-circle-center $totalAnimation $delay infinite;
+		}	
+	}	
+
+	&__outter{
+		transform: translate(0,-$rotate-outter-circle-raduis);
+		animation: rotate-outter-circle $totalAnimation $delay infinite;
+		animation-timing-function: linear;		
+
+		.draw__circle{
+			@include stroke-line($circle-outtest);
+			animation: draw-outter-circle $totalAnimation $delay infinite;
+		}
+
+		.draw__crossline{
+			@include stroke-line($drawing-circle-line-len);
+				animation: draw-outter-circle-center $totalAnimation $delay infinite;
+		}			
+	}	
+}
+
+.build-leaf {
+	stroke-width: 2px;
+	fill: none;
+	stroke: #fff; // stroke: none; // works in Chrome not in Firefox
+	stroke-opacity: 0; // stroke: none; // works in Chrome not in Firefox
+
+	@for $i from 0 to $leaf-number {
+		&__inner-#{$i+1} {
+			transform: translate(220px, 220px) rotate(($i * $leaf-rotate-angle) + deg) translate(-220px, -220px);
+			animation: build-leaf-inner-#{$i+1} $totalAnimation $delay infinite;
+		}
+	}
+
+	@for $i from 0 to $leaf-number {
+		&__outter-#{$i+1} {
+			transform: translate(220px, 220px) rotate(($i * $leaf-rotate-angle) + deg) translate(-220px, -220px);
+			animation: build-leaf-outter-#{$i+1} $totalAnimation $delay infinite;
+		}
+	}
+}
+
+.logo-leaf{
+	fill: #fff;
+	stroke: #fff;
+	stroke-opacity: 0;
+	fill-opacity: 0;
+	transform: rotate(0);
+	animation: rotate-leafs $totalAnimation $delay infinite;
+
+	@for $i from 0 to $leaf-number {
+		&__leaf-#{$i+1} {
+			stroke-width: 3px;
+			@include stroke-line($leaf-len);
+			transform: translate(220px, 220px) rotate(($i * $leaf-rotate-angle) + deg) translate(-220px, -220px);
+			animation: logo-leaf-#{$i+1} $totalAnimation $delay infinite;
+		}
+	}
+}
+
+.logo-text{
+	opacity: 0;
+	animation: logo-text $totalAnimation $delay infinite;
+}
+
+@keyframes sketch-opacity{
+	40%{
+		opacity: 1;
+	}	
+	60%{
+		opacity: 0.7;
+	}
+	75%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+
+@keyframes sketch-box {
+	4% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+
+@keyframes sketch-lines{
+	10% {
+		stroke-dashoffset: $lineLen;
+	}
+	14% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes circle-inner{
+	11% {
+		stroke-dashoffset: $circle-inner;
+	}
+	15% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes circle-middle{
+	13% {
+		stroke-dashoffset: $circle-middle;
+	}
+	17% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes circle-outter{
+	15% {
+		stroke-dashoffset: $circle-outter;
+	}
+	19% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes draw-inner-circle{
+	19% {
+		stroke-dashoffset: $drawing-circle-inner;
+	}
+	23% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes draw-inner-circle-center {
+	18% {
+		stroke-dashoffset: $drawing-circle-line-len;
+	}
+	24% {
+		stroke-dashoffset: 0;
+	}	
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes rotate-inner-circle{
+	23% {
+		transform: rotate(0deg) translate(0,-$drawing-circle-inner-raduis) rotate(0deg);
+		opacity: 1;
+	}
+
+	@for $i from 0 to $leaf-number {
+
+		$animation-step: (24 + $step*$i) + %;
+
+		#{$animation-step}{
+			stroke: nth($colors, $i+1);
+		}
+	}
+	37%{
+		opacity: 0.8;
+	}
+	39% {
+		transform: rotate(360deg) translate(0,-$drawing-circle-inner-raduis) rotate(-360deg);
+		opacity: 0;
+	}
+	100%{
+		transform: rotate(360deg) translate(0,-$drawing-circle-inner-raduis) rotate(-360deg);
+		opacity: 0;
+	}
+}
+
+@for $i from 0 to $leaf-number {
+
+	$first-value: (24 + $step*$i) + %;
+	$second-value: (26 + $step*$i) + %;
+
+	@keyframes build-leaf-inner-#{$i+1} {
+		#{$first-value}{
+			// stroke: none; // works in Chrome not in Firefox
+			stroke-opacity: 0;
+		}
+		#{$second-value}{
+			stroke: lighten(nth($colors, $i+1), 12%);
+			stroke-opacity: 1;
+		}
+		75%{
+			stroke-opacity: 1;
+		}
+		80%{
+			stroke-opacity: 0;
+		}
+		100%{
+			stroke: lighten(nth($colors, $i+1), 12%);
+			stroke-opacity: 0;
+		}
+	}
+}
+
+
+@keyframes draw-outter-circle{
+	39% {
+		stroke-dashoffset: $circle-outtest;
+	}
+	43% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes draw-outter-circle-center {
+	37% {
+		stroke-dashoffset: $drawing-circle-line-len;
+	}
+	43% {
+		stroke-dashoffset: 0;
+	}	
+	100% {
+		stroke-dashoffset: 0;
+	}	
+}
+
+@keyframes rotate-outter-circle{
+	43% {
+		transform: rotate(0deg) translate(0,-$rotate-outter-circle-raduis) rotate(0deg);
+		opacity: 1;
+	}
+	@for $i from 0 to $leaf-number {
+
+		$animation-step: (44 + ($step+1)*$i) + %;
+
+		#{$animation-step}{
+			stroke: nth($colors, $i+1);
+		}
+	}	
+	62%{
+		opacity: 0.8;
+	}
+	64% {
+		transform: rotate(360deg) translate(0,-$rotate-outter-circle-raduis) rotate(-360deg);
+		opacity: 0;
+	}
+	100%{
+		transform: rotate(360deg) translate(0,-$rotate-outter-circle-raduis) rotate(-360deg);
+		opacity: 0;
+	}
+}
+
+@for $i from 0 to $leaf-number {
+
+	$first-value: (45 + ($step+1)*$i) + %;
+	$second-value: (46 + ($step+1)*$i) + %;
+
+	@keyframes build-leaf-outter-#{$i+1} {
+		#{$first-value}{
+			// stroke: none; // works in Chrome not in Firefox
+			stroke-opacity: 0;
+		}
+		#{$second-value}{
+			stroke: lighten(nth($colors, $i+1), 12%);
+			stroke-opacity: 1;
+		}
+		75%{
+			stroke-opacity: 1;
+		}
+		80%{
+			stroke-opacity: 0;
+		}
+		100%{
+			stroke: lighten(nth($colors, $i+1), 12%);
+			stroke-opacity: 0;
+		}
+	}
+}
+
+@for $i from 0 to $leaf-number {
+
+	$start: (63 + $i) + %;
+	$first-value: (64 + $i) + %;
+	$second-value: (72 + $i) + %;
+	$third-value: (73 + $i) + %;
+	$fourd-value: (77 + $i) + %;
+
+	@keyframes logo-leaf-#{$i+1} {
+		#{$start}{
+			stroke-dashoffset: $leaf-len;
+			stroke-opacity: 0;
+		}
+		#{$first-value}{
+			stroke-dashoffset: $leaf-len;
+			stroke-opacity: 1;
+		}
+		#{$second-value}{
+			stroke: nth($colors, $i+1);
+			stroke-dashoffset: 0;
+			fill-opacity: 0;
+		}
+		#{$third-value}{
+			fill: lighten(nth($colors, $i+1), 80%);
+			fill-opacity: 1;
+		}
+		#{$fourd-value}{
+			fill: nth($colors, $i+1);
+		}
+		100%{
+			stroke: nth($colors, $i+1);
+			stroke-dashoffset: 0;
+			fill: nth($colors, $i+1);
+			fill-opacity: 1;
+			stroke-opacity: 1;
+		}
+	}
+}
+
+@keyframes rotate-leafs{
+	82%{
+		transform: translate(220px, 220px) rotate(0) translate(-220px, -220px);
+	}
+	95%{
+		transform: translate(220px, 220px) rotate(360deg) translate(-220px, -220px);
+	}
+	100%{
+		transform: translate(220px, 220px) rotate(360deg) translate(-220px, -220px);
+	}
+}
+
+@keyframes logo-text{
+	78%{
+		opacity: 0;
+	}
+	95%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 1;
+	}
+}
