@@ -1,5 +1,5 @@
-# svg-smil-logo-animation
+# svg-logo-animation
 
-SVG logo animation done with SMIL. SASS source file available. IE doesn't support SMIL animations.
+SVG logo animation done with CSS. SASS source file available.
 
 Preview page - https://vydimitrov.github.io/svg-smil-logo-animation/
