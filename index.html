@@ -1,89 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>SVG Anime</title>
-	<link rel="stylesheet" href="css/main.css">
-</head>
-<body>
-	<svg class="wrapper" 
-		version="1.1"
-		xmlns:svg="http://www.w3.org/1999/svg" xmlns="http://www.w3.org/1999/svg"
-		xmlns:xlink="http://www.w3.org/1999/xlink">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SVG Logo Animation</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <svg
+      class="wrapper"
+      version="1.1"
+      xmlns:svg="http://www.w3.org/1999/svg"
+      xmlns="http://www.w3.org/1999/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <g class="sketch">
+        <path class="sketch__box" d="M0,0 0,440 440,440 440,0z" />
+        <path class="sketch__line sketch__line--1" d="M45,0 45,440" />
+        <path class="sketch__line sketch__line--2" d="M95,0 95,440" />
+        <path class="sketch__line sketch__line--3" d="M175,0 175,440" />
+        <path class="sketch__line sketch__line--4" d="M265,0 265,440" />
+        <path class="sketch__line sketch__line--5" d="M345,0 345,440" />
+        <path class="sketch__line sketch__line--6" d="M395,0 395,440" />
 
-		<g class="sketch">
-			<path class="sketch__box" d="M0,0 0,440 440,440 440,0z" />
-			<path class="sketch__line sketch__line--1" d="M45,0 45,440" />
-			<path class="sketch__line sketch__line--2" d="M95,0 95,440" />
-			<path class="sketch__line sketch__line--3" d="M175,0 175,440" />	
-			<path class="sketch__line sketch__line--4" d="M265,0 265,440" />
-			<path class="sketch__line sketch__line--5" d="M345,0 345,440" />
-			<path class="sketch__line sketch__line--6" d="M395,0 395,440" />	
+        <path class="sketch__line sketch__line--1" d="M0,395 440,395" />
+        <path class="sketch__line sketch__line--2" d="M0,345 440,345" />
+        <path class="sketch__line sketch__line--3" d="M0,265 440,265" />
+        <path class="sketch__line sketch__line--4" d="M0,175 440,175" />
+        <path class="sketch__line sketch__line--5" d="M0,95 440,95" />
+        <path class="sketch__line sketch__line--6" d="M0,45 440,45" />
+        <path
+          class="sketch__circle sketch__circle--inner"
+          d="M265,220 a45,45 0 0,1 -90,0 a45,45 0 0,1 90,0"
+        />
+        <path
+          class="sketch__circle sketch__circle--middle"
+          d="M95,220 a125,125 1 1,0 250,0 a125,125 1 1,0 -250,0"
+        />
+        <path
+          class="sketch__circle sketch__circle--outter"
+          d="M395,220 a175,175 0 0,1 -350,0 a175,175 0 0,1 350,0"
+        />
+      </g>
+      <g class="draw">
+        <g class="draw__inner">
+          <path
+            class="draw__circle"
+            fill="none"
+            d="M50,220 a170,170 1 1,0 340,0 a170,170 1 1,0 -340,0"
+          />
+          <path class="draw__crossline" fill="none" d="M216,224 L224,216" />
+          <path class="draw__crossline" fill="none" d="M224,224 L216,216" />
+        </g>
+        <g class="draw__outter">
+          <path
+            class="draw__circle"
+            fill="none"
+            d="M0,220 a220,220 1 1,0 440,0 a220,220 1 1,0 -440,0"
+          />
+          <path class="draw__crossline" fill="none" d="M216,224 L224,216" />
+          <path class="draw__crossline" fill="none" d="M224,224 L216,216" />
+        </g>
+      </g>
+      <g class="build-leaf">
+        <path class="build-leaf__inner-1" d="M196,259 A170,170 0 0,1 67,105" />
+        <path class="build-leaf__inner-2" d="M196,259 A170,170 0 0,1 67,105" />
+        <path class="build-leaf__inner-3" d="M196,259 A170,170 0 0,1 67,105" />
+        <path class="build-leaf__inner-4" d="M196,259 A170,170 0 0,1 67,105" />
+        <path class="build-leaf__inner-5" d="M196,259 A170,170 0 0,1 67,105" />
+        <path class="build-leaf__inner-6" d="M196,259 A170,170 0 0,1 67,105" />
+        <path class="build-leaf__inner-7" d="M196,259 A170,170 0 0,1 67,105" />
 
-			<path class="sketch__line sketch__line--1" d="M0,395 440,395" />
-			<path class="sketch__line sketch__line--2" d="M0,345 440,345" />
-			<path class="sketch__line sketch__line--3" d="M0,265 440,265" />	
-			<path class="sketch__line sketch__line--4" d="M0,175 440,175" />
-			<path class="sketch__line sketch__line--5" d="M0,95 440,95" />
-			<path class="sketch__line sketch__line--6" d="M0,45 440,45" />	
-			<path class="sketch__circle sketch__circle--inner" d="M265,220 a45,45 0 0,1 -90,0 a45,45 0 0,1 90,0"/>	
-			<path class="sketch__circle sketch__circle--middle" d="M95,220 a125,125 1 1,0 250,0 a125,125 1 1,0 -250,0"/>
-			<path class="sketch__circle sketch__circle--outter" d="M395,220 a175,175 0 0,1 -350,0 a175,175 0 0,1 350,0"/>
-		</g>	
-		<g class="draw">
-			<g class="draw__inner">
-				<path class="draw__circle" fill="none" d="M50,220 a170,170 1 1,0 340,0 a170,170 1 1,0 -340,0"/>
-				<path class="draw__crossline" fill="none" d="M216,224 L224,216"/>	
-				<path class="draw__crossline" fill="none" d="M224,224 L216,216"/>
-			</g>				
-			<g class="draw__outter">
-				<path class="draw__circle" fill="none" d="M0,220 a220,220 1 1,0 440,0 a220,220 1 1,0 -440,0"/>
-				<path class="draw__crossline" fill="none" d="M216,224 L224,216"/>	
-				<path class="draw__crossline" fill="none" d="M224,224 L216,216"/>
-			</g>															
-		</g>		
-		<g class="build-leaf">
-			<path class="build-leaf__inner-1" d="M196,259 A170,170 0 0,1 67,105" />
-			<path class="build-leaf__inner-2" d="M196,259 A170,170 0 0,1 67,105" />
-			<path class="build-leaf__inner-3" d="M196,259 A170,170 0 0,1 67,105" />
-			<path class="build-leaf__inner-4" d="M196,259 A170,170 0 0,1 67,105" />
-			<path class="build-leaf__inner-5" d="M196,259 A170,170 0 0,1 67,105" />
-			<path class="build-leaf__inner-6" d="M196,259 A170,170 0 0,1 67,105" />
-			<path class="build-leaf__inner-7" d="M196,259 A170,170 0 0,1 67,105" />
-
-			<path class="build-leaf__outter-1" d="M196,259 A220,220 0 0,1 125,100" />
-			<path class="build-leaf__outter-2" d="M196,259 A220,220 0 0,1 125,100" />
-			<path class="build-leaf__outter-3" d="M196,259 A220,220 0 0,1 125,100" />
-			<path class="build-leaf__outter-4" d="M196,259 A220,220 0 0,1 125,100" />
-			<path class="build-leaf__outter-5" d="M196,259 A220,220 0 0,1 125,100" />
-			<path class="build-leaf__outter-6" d="M196,259 A220,220 0 0,1 125,100" />
-			<path class="build-leaf__outter-7" d="M196,259 A220,220 0 0,1 125,100" />			
-		</g>
-		<g class="logo-leaf">
-			<path class="logo-leaf__leaf-1" stroke-miterlimit="16" d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259" />
-			<path class="logo-leaf__leaf-2" stroke-miterlimit="16" d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259" />
-			<path class="logo-leaf__leaf-3" stroke-miterlimit="16" d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259" />
-			<path class="logo-leaf__leaf-4" stroke-miterlimit="16" d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259" />
-			<path class="logo-leaf__leaf-5" stroke-miterlimit="16" d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259" />
-			<path class="logo-leaf__leaf-6" stroke-miterlimit="16" d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259" />
-			<path class="logo-leaf__leaf-7" stroke-miterlimit="16" d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259" />			
-		</g>
-		<g class="logo-text" transform="translate(0.000000,440.000000) scale(0.100000,-0.100000)"
-			fill="#000000" stroke="none">
-			<path d="M1883 2238 c-17 -46 -40 -107 -52 -135 l-21 -53 33 0 c30 0 34 4 52
-			53 l21 52 49 3 c46 3 75 20 75 44 0 4 -23 8 -51 8 -43 0 -50 3 -45 16 3 9 6
-			20 6 25 0 5 27 9 60 9 54 0 62 3 69 23 12 31 -2 37 -89 37 l-76 0 -31 -82z"/>
-			<path d="M2307 2293 c-8 -16 -24 -56 -37 -90 -12 -35 -25 -61 -29 -59 -3 2
-			-20 41 -36 86 l-29 81 -35 -3 c-35 -3 -35 -3 -83 -128 -26 -69 -48 -126 -48
-			-128 0 -2 15 -2 32 0 30 3 34 8 63 80 16 42 33 79 36 82 3 3 27 -49 54 -115
-			32 -81 50 -117 56 -107 12 22 119 307 119 318 0 5 -11 10 -25 10 -17 0 -29 -9
-			-38 -27z"/>
-			<path d="M2390 2301 c-17 -32 -12 -41 25 -41 19 0 35 -4 35 -8 0 -5 -32 -51
-			-71 -103 l-70 -94 108 -3 c93 -2 110 0 120 15 25 33 16 42 -47 45 l-61 3 71
-			95 c38 52 70 98 70 103 0 4 -38 7 -85 7 -73 0 -86 -3 -95 -19z"/>
-		</g>
-	</svg>
-</body>
+        <path
+          class="build-leaf__outter-1"
+          d="M196,259 A220,220 0 0,1 125,100"
+        />
+        <path
+          class="build-leaf__outter-2"
+          d="M196,259 A220,220 0 0,1 125,100"
+        />
+        <path
+          class="build-leaf__outter-3"
+          d="M196,259 A220,220 0 0,1 125,100"
+        />
+        <path
+          class="build-leaf__outter-4"
+          d="M196,259 A220,220 0 0,1 125,100"
+        />
+        <path
+          class="build-leaf__outter-5"
+          d="M196,259 A220,220 0 0,1 125,100"
+        />
+        <path
+          class="build-leaf__outter-6"
+          d="M196,259 A220,220 0 0,1 125,100"
+        />
+        <path
+          class="build-leaf__outter-7"
+          d="M196,259 A220,220 0 0,1 125,100"
+        />
+      </g>
+      <g class="logo-leaf">
+        <path
+          class="logo-leaf__leaf-1"
+          stroke-miterlimit="16"
+          d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259"
+        />
+        <path
+          class="logo-leaf__leaf-2"
+          stroke-miterlimit="16"
+          d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259"
+        />
+        <path
+          class="logo-leaf__leaf-3"
+          stroke-miterlimit="16"
+          d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259"
+        />
+        <path
+          class="logo-leaf__leaf-4"
+          stroke-miterlimit="16"
+          d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259"
+        />
+        <path
+          class="logo-leaf__leaf-5"
+          stroke-miterlimit="16"
+          d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259"
+        />
+        <path
+          class="logo-leaf__leaf-6"
+          stroke-miterlimit="16"
+          d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259"
+        />
+        <path
+          class="logo-leaf__leaf-7"
+          stroke-miterlimit="16"
+          d="M196,259 A170,170 0 0,1 67,105 C66,50 126,54 125,100 A220,220 0 0,0 196,259"
+        />
+      </g>
+    </svg>
+  </body>
 </html>
-
-

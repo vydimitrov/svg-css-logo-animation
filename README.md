@@ -1,5 +1,5 @@
 # svg-logo-animation
 
-SVG logo animation done with CSS animations. SASS source file available.
+SVG logo animation done with CSS. SASS source file available.
 
 Preview page - https://vydimitrov.github.io/svg-css-logo-animation
